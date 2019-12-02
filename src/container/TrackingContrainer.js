@@ -9,12 +9,24 @@ export default class TrackingContainer extends React.Component {
     drawerLabel: "Trackings"
   };
 
+  
+
   state = {
     trackings: [],
     user: null
   };
   componentDidMount() {
     this._retrieveData();
+  }
+
+
+  shouldComponentUpdate(){
+    if (this.state.trackings){
+      this._retrieveData();
+      return true;
+    }else{
+      return false;
+    }
   }
 
   removeTracking = id => {
@@ -32,9 +44,15 @@ export default class TrackingContainer extends React.Component {
       if (value !== null) {
         console.log(value);
         this.fetchTracking(value);
+      }else{
+        this.setState({
+        trackings: []
+      })
       }
     } catch (error) {
-      // Error retrieving data
+      this.setState({
+        trackings: []
+      })
       console.log(error);
     }
   };
@@ -55,6 +73,7 @@ export default class TrackingContainer extends React.Component {
   }
 
   render() {
+    
     // console.log(this.state.trackings, "this is from container");
     return (
       <View>

@@ -13,15 +13,18 @@ import MyHeader from "./MyHeader";
 
 export default class Login extends Component {
   static navigationOptions = {
-    drawerLabel: "Logout"
-  };
-  
+    drawerLabel: "Login"
+  }
+
   state = {
     username: "",
     password: "",
     user: null
   };
 
+  
+
+  
 
   onChangeText = (text, key) => {
     this.setState({
@@ -43,11 +46,15 @@ export default class Login extends Component {
         // console.log(data)
         if (data) {
           AsyncStorage.setItem("user", "" + data.id);
+          this.props.navigation.setParams({
+            data
+          })
           this.setState({
             user: data,
             username: "",
             password: ""
           });
+
           this.props.navigation.navigate("Trackings");
         } else {
           this.setState({});
@@ -57,6 +64,7 @@ export default class Login extends Component {
   };
 
   render() {
+
     return (
       <View>
         <MyHeader {...this.props} />
