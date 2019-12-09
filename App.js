@@ -6,21 +6,35 @@ import { createAppContainer } from "react-navigation";
 import MyHomeScreen from "./src/components/MyHomeScreen";
 import TrackingContrainer from "./src/container/TrackingContrainer";
 import Login from "./src/components/Login";
+import Signup from './src/components/Signup'
+import AddTracking from './src/components/AddTracking'
 
 import MoreInfoContainer from "./src/container/MoreInfoContainer";
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
-    screen: MyHomeScreen
+    screen: Login,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
   },
   Trackings: {
     screen: TrackingContrainer
   },
-  Login: {
-    screen: Login
+  Signup: {
+    screen: Signup,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
   },
   MoreInfo: {
     screen: MoreInfoContainer,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  },
+  AddTracking: {
+    screen: AddTracking,
     navigationOptions: {
       drawerLabel: () => null
     }
@@ -29,19 +43,5 @@ const MyDrawerNavigator = createDrawerNavigator({
 
 const App = createAppContainer(MyDrawerNavigator);
 
-
-// class App extends React.Component {
-//   render() {
-//     
-//     return (
-//       <View>
-//         {MyApp}
-//         <MyHeader {...this.props}/>
-        
-//         <Text> Hello?</Text>
-//       </View>
-//     );
-//   }
-// }
 
 export default App;
