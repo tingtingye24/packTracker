@@ -24,7 +24,7 @@ export default class Signup extends Component {
     });
   };
   handleClick = () => {
-    fetch(`http://localhost:3000/users/signup`, {
+    fetch(`https://pack-tracker-api.herokuapp.com/users/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export default class Signup extends Component {
       .then(resp => resp.json())
       .then(data => {
         console.log(data)
-        if (data) {
+        if (data.id) {
           AsyncStorage.setItem("user", "" + data.id);
           this.setState({
             user: data,
@@ -43,7 +43,7 @@ export default class Signup extends Component {
             password: ""
           });
 
-          this.props.navigation.navigate("Trackings");
+          this.props.navigation.navigate("Trackings",{user: data});
         } else {
           Alert.alert("Error", "Try Again!");
         }
@@ -56,17 +56,17 @@ export default class Signup extends Component {
     return (
       <View>
         <MyHeader {...this.props} />
-        <Text>Sign Up</Text>
-        <Text>Username</Text>
+        <Text style={{fontSize: 30, textAlign: "center", margin: 20}}>Sign Up</Text>
+        <Text style={{textAlign: "center"}}>Username</Text>
         <TextInput
           onChangeText={text => this.onChangeText(text, "username")}
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={{ height: 40, borderColor: "gray", borderWidth: 1, margin: 10 }}
           value={this.state.username}
         />
-        <Text>Password</Text>
+        <Text style={{textAlign: "center"}}>Password</Text>
         <TextInput
           onChangeText={text => this.onChangeText(text, "password_digest")}
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={{ height: 40, borderColor: "gray", borderWidth: 1, margin: 10 }}
           secureTextEntry={true}
           value={this.state.password_digest}
         />

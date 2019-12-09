@@ -4,7 +4,7 @@ import { Card } from "react-native-elements";
 
 export default class TrackingCard extends Component {
   handleDelete = id => {
-    fetch(`http://localhost:3000/tracking/${id}`, {
+    fetch(`https://pack-tracker-api.herokuapp.com/trackings/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

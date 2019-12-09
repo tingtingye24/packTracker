@@ -33,7 +33,7 @@ export default class Login extends Component {
   };
 
   handleClick = () => {
-    fetch(`http://localhost:3000/users/login`, {
+    fetch(`https://pack-tracker-api.herokuapp.com/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,8 +54,8 @@ export default class Login extends Component {
             username: "",
             password: ""
           });
-
-          this.props.navigation.navigate("Trackings");
+          console.log(data, "this is from login")
+          this.props.navigation.navigate("Trackings",{user: data});
         } else {
           this.setState({});
           Alert.alert("Error", "Account information incorrect!");
@@ -68,17 +68,17 @@ export default class Login extends Component {
     return (
       <View>
         <MyHeader {...this.props} />
-        <Text>Log In</Text>
-        <Text>Username</Text>
+        <Text style={{fontSize: 30, textAlign: "center", margin: 20}}>Log In</Text>
+        <Text style={{textAlign: "center"}}>Username</Text>
         <TextInput
           onChangeText={text => this.onChangeText(text, "username")}
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={{ height: 40, borderColor: "gray", borderWidth: 1, margin: 10 }}
           value={this.state.username}
         />
-        <Text>Password</Text>
+        <Text style={{textAlign: "center"}}>Password</Text>
         <TextInput
           onChangeText={text => this.onChangeText(text, "password")}
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={{ height: 40, borderColor: "gray", borderWidth: 1, margin: 10 }}
           secureTextEntry={true}
           value={this.state.password}
         />

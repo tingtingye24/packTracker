@@ -12,7 +12,7 @@ export default class MyHeader extends Component {
           onPress: this.props.navigation.openDrawer
         }}
         centerComponent={{ text: "Pack Tracker", style: { color: "#fff" } }}
-        rightComponent={{ icon: "home", color: "#fff", onPress: () => {
+        rightComponent={{ icon: "exit-to-app", color: "#fff", onPress: () => {
           AsyncStorage.removeItem('user')
           
           this.props.navigation.navigate('Home')

@@ -7,6 +7,7 @@ import MyHomeScreen from "./src/components/MyHomeScreen";
 import TrackingContrainer from "./src/container/TrackingContrainer";
 import Login from "./src/components/Login";
 import Signup from './src/components/Signup'
+import AddTracking from './src/components/AddTracking'
 
 import MoreInfoContainer from "./src/container/MoreInfoContainer";
 
@@ -28,6 +29,12 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
   MoreInfo: {
     screen: MoreInfoContainer,
+    navigationOptions: {
+      drawerLabel: () => null
+    }
+  },
+  AddTracking: {
+    screen: AddTracking,
     navigationOptions: {
       drawerLabel: () => null
     }
