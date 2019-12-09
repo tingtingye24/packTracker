@@ -8,8 +8,8 @@ export default class Activity extends Component {
     let { timestamp, details, location } = this.props.activity;
     return (
 
-      <View style={{borderWidth: "10px", borderColor: "white", backgroundColor: "rgb(217, 235, 227),", padding: "2%" }}>
-        <Text style={{textAlign: "center"}}>{timestamp}</Text>
+      <View style={{borderWidth: 10, borderColor: "white", backgroundColor: "rgb(217, 235, 227)", padding: "2%" }}>
+        <Text style={{textAlign: "center"}}>{"Date: " + timestamp.slice(0, 10) + " Time: " + timestamp.slice(11, 19)}</Text>
         <Text style={{textAlign: "center"}}>{details}</Text>
         <Text style={{textAlign: "center"}}>{location}</Text>
       </View>
